@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Juegos Manoli</title>
+    <style>
+        body{
+            background-color: goldenrod;
+            margin: 0;
+        }
+        h1 {
+        font-style: oblique;
+        }
+
+        #contenedor {
+        text-align: center;
+        margin-top: 4cm;
+        }
+
+        /* Estilo para crear distancia entre Bloque 3 y Bloque 2 */
+
+        #grupo2 {
+        margin-bottom: 6cm;
+        }
+    </style>
+
+    <script>
+    // Función para crear elementos y añadir al contenedor
+    function crearElemento(etiqueta, atributos, contenido, parent) {
+        let elemento = document.createElement(etiqueta);
+        for (let i in atributos) {
+            elemento.setAttribute(i, atributos[i]);
+        }
+        if (contenido) {
+            elemento.textContent = contenido;
+        }
+        if (parent) {
+            parent.appendChild(elemento);
+        }
+        return elemento;
+    }
+
+    
+    function cargarPagina(){ 
+
+        // Crea elementos y divide por grupos cada uno de los requerimientos según la posición vamos a darle
+        let bloque1 = crearElemento('div', { style: 'margin-bottom: 20px;' }, '', document.getElementById('contenedor'));
+        let bloque2 = crearElemento('div', { style: 'margin-bottom: 40px;' }, '', document.getElementById('contenedor'));
+        let bloque3= crearElemento('div', { style: 'margin-bottom: 20px;' }, '', document.getElementById('contenedor'));
+        let bloque4 = crearElemento('div', { style: 'margin-bottom: 20px;' }, name, document.getElementById('contenedor'));
+        let bloque5 = crearElemento('div', { style: 'margin-bottom: 20px;' }, '', document.getElementById('contenedor'));
+        let bloque6 = crearElemento('div', { style: 'margin-bottom: 20px;' }, '', document.getElementById('contenedor'));
+        let bloque7 = crearElemento('div', { style: 'margin-bottom: 20px;' }, '', document.getElementById('contenedor'));
+
+
+        // Grupo 1: Nombre, Apellido, y DNI
+
+        crearElemento('label', { for: 'nombre', style: 'display: inline-block; margin-right: 10px;' }, 'Nombre:', bloque1);
+        crearElemento('input', { type: 'text', id: 'nombre', style: 'display: inline-block; margin-right: 20px' }, '', bloque1);
+
+        crearElemento('label', { for: 'apellido', style: 'display: inline-block; margin-right: 10px;' }, 'Apellido:', bloque1);
+        crearElemento('input', { type: 'text', id: 'apellido', style: 'display: inline-block; margin-right: 20px' }, '', bloque1);
+
+        crearElemento('label', { for: 'dni', style: 'display: inline-block; margin-right: 10px;' }, 'DNI:', bloque1);
+        crearElemento('input', { type: 'text', id: 'dni', style: 'display: inline-block; margin-right: 20px' }, 'DNI', bloque1);
+
+        // Grupo 2: Dirección y Teléfono
+
+        crearElemento('label', { for: 'direccion', style: 'display: inline-block; margin-right: 10px;' }, 'Dirección:', bloque2);
+        crearElemento('input', { type: 'text', id: 'direccion', style: 'display: inline-block; margin-right: 20px' }, '', bloque2);
+
+        crearElemento('label', { for: 'telefono', style: 'display: inline-block; margin-right: 10px;' }, 'Teléfono:', bloque2);
+        crearElemento('input', { type: 'text', id: 'telefono', style: 'display: inline-block; margin-right: 20px' }, '', bloque2);
+
+        // Bloque 3: Radio Buttons. Se selecciona día de semana para jugar
+
+        crearElemento('label', { style: 'display: block; margin-bottom: 5px;' }, 'Día de la semana:', bloque3);
+
+        let labelMartes = crearElemento('label', { for: 'radioMartes', style: 'margin-right: 10px;' }, 'Martes', bloque3);
+        crearElemento('input', { type: 'radio', name: 'diaSemana', id: 'radioMartes', value: 'Martes', style: 'margin-right: 5px;' }, '', labelMartes);
+
+        let labelViernes = crearElemento('label', { for: 'radioViernes', style: 'margin-right: 10px;' }, 'Viernes', bloque3);
+        crearElemento('input', { type: 'radio', name: 'diaSemana', id: 'radioViernes', value: 'Viernes', style: 'margin-right: 5px;' }, '', labelViernes);
+
+        // Bloque 4: Radio Button. Se selecciona tipo de juego
+
+        crearElemento('label', {style: 'display: block; margin-bottom: 5px;'}, 'Tipo de juego:', bloque4);
+
+        let labelIndividual = crearElemento('label', {for: 'radioIndividual', style: 'margin-right: 10px;'}, 'Individual', bloque4);
+        crearElemento('input', {type: 'radio', name: 'tipoJuego', id: 'radioIndividual', value: 'Individual', style: 'margin-right: 5px;' }, '', labelIndividual);
+
+        let labelDoble = crearElemento('label', {for: 'radioDoble', style: 'margin-right: 10px;'}, 'Doble', bloque4);
+        crearElemento('input', {type: 'radio', name: 'tipoJuego', id: 'radioDoble', value: 'Doble', style: 'margin-right: 5px;'}, '', labelDoble);
+
+        let labelTriple = crearElemento('label', {for: 'radioTriple', style: 'margin-right: 10px;'}, 'Triple', bloque4);
+        crearElemento('input', {type: 'radio', name: 'tipoJuego', id: 'radioTriple', value: 'Triple', style: 'margin-right: 5px;' }, '', labelTriple);
+
+        let labelCarambola = crearElemento('label', {for: 'radioCarambola', style: 'margin-right: 10px;'}, 'Carambola', bloque4);
+        crearElemento('input', {type: 'radio', name: 'tipoJuego', id: 'radioCarambola', value: 'Carambola', style: 'margin-right: 5px;'}, '', labelCarambola);
+
+        // Bloque 5: Checkboxes a seleccionar, se genera el box y texto que le da valor
+
+        crearElemento('label', { style: 'display: block; margin-bottom: 5px;' }, 'Extra:', bloque5);
+
+        let labelMenos2 = crearElemento('label', { for: 'checkboxMenos2', style: 'margin-bottom: 5px; padding: 5px;'}, '-2', bloque5);
+        crearElemento('input', { type: 'checkbox', name: 'extra', value: '-2', style: 'margin-right: 5px;' }, '-2', labelMenos2);
+
+        let labelMenos1 = crearElemento('label', { for: 'checkboxMenos1', style: 'margin-bottom: 5px; padding: 5px;'}, '-1', bloque5);
+        crearElemento('input', { type: 'checkbox', name: 'extra', value: '-1', style: 'margin-right: 5px;' }, '-1', labelMenos1);
+
+        let labelCero = crearElemento('label', { for: 'checkboxCero', style: 'margin-bottom: 5px; padding: 5px;'}, '0', bloque5);
+        crearElemento('input', { type: 'checkbox', name: 'extra', value: '0', style: 'margin-right: 5px;' }, '0', labelCero);
+
+        let labelMas1 = crearElemento('label', { for: 'checkboxMas1', style: 'margin-bottom: 5px; padding: 5px;'}, '1', bloque5);
+        crearElemento('input', { type: 'checkbox', name: 'extra', value: '+1', style: 'margin-right: 5px;' }, '+1', labelMas1);
+
+        let labelMas2 = crearElemento('label', { for: 'checkboxMas2', style: 'margin-bottom: 5px; padding: 5px;'}, '2', bloque5);
+        crearElemento('input', { type: 'checkbox', name: 'extra', value: '+2', style: 'margin-right: 5px;' }, '+2', labelMas2);
+        
+        
+        // Bloque 6: Campo Select a elegir entre izquierda y derecha según la foto 
+
+        crearElemento('img', { src: 'C:/Users/guill/OneDrive/Escritorio/AE-1_Dom_Formularios/izquierda.png', alt: 'Izquierda', style: 'width: 100px; height: 100px; margin-right: 10px;' }, '', opcionIzquierda);
+        crearElemento('img', { src: 'C:/Users/guill/OneDrive/Escritorio/AE-1_Dom_Formularios/derecha.png', alt: 'Derecha', style: 'width: 100px; height: 100px;' }, '', opcionDerecha);
+        
+        crearElemento('label', { style: 'display: block; margin-bottom: 5px;' }, 'Posición:', bloque6);
+
+        let selectPosicion = crearElemento('select', { id: 'posicion', style: 'margin-bottom: 10px;' }, '', bloque6);
+        let opcionIzquierda = crearElemento('option', { value: 'izquierda' }, 'Izquierda', selectPosicion);
+        let opcionDerecha = crearElemento('option', { value: 'derecha' }, 'Derecha', selectPosicion);
+
+        
+        // Bloque 7: Text Area (Comentarios)
+
+        crearElemento('label', { for: 'comentarios', style: 'display: block; margin-bottom: 5px;' }, 'Comentarios:', bloque7);
+        crearElemento('textarea', { id: 'comentarios', rows: '4', cols: '50' }, '', bloque7);
+    }
+        // Ejecutamos las funciones al cargar la pagina
+    window.onload = function() {
+        cargarPagina();
+    };
+    
+    </script>
+</head>
+<body>
+    <h1 id="head" style="text-align: center; font-style: oblique; margin-top: 1cm;">Juegos Manoli</h1>
+        <div id="contenedor" style="text-align: center; margin-top: 3cm;">
+        </div>
+</body>
+</html>
